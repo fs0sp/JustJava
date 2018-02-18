@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
     }
 
     /**
@@ -48,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
         displayMessage(createOrderSummary(price));
 
     }
+
+    /**
+     *
+     * @param price total price of order
+     * @return order summary
+     */
 
     private String createOrderSummary(int price){
 
@@ -71,10 +77,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given price on the screen.
      */
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-    }
+
 
 
 

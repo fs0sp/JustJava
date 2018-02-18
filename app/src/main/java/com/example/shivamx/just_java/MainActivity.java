@@ -32,21 +32,39 @@ public class MainActivity extends AppCompatActivity {
         priceTextView.setText(message);
     }
 
+    /**
+     *
+     * @return total price
+     */
+
+    public int calculatePrice(){
+
+        return quantity * 5;
+    }
+
     public void submitOrder(View view) {
 
-
-        String priceMessage = "Total: $ " + quantity*5 + " \n Thank You! "  ;
-        int numberOfCoffee = quantity;
-        displayMessage(priceMessage);
+        int price = calculatePrice();
+        displayMessage(createOrderSummary(price));
 
     }
+
+    private String createOrderSummary(int price){
+
+
+       String priceMessage = "Name : Shivam Pokhriyal \n ";
+        priceMessage = priceMessage + "Quantity : " + quantity ;
+        priceMessage = priceMessage + " \n Total: $ " + price + " \n Thank You! "  ;
+
+        return priceMessage;
+    }
+
 
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void display(int number) {
-        TextView quantityTextView = (TextView) findViewById(
-                R.id.quantity_text_view);
+    private void displayQuantity(int number) {
+        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
 
@@ -64,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         //int quantity = 3;
         quantity = quantity + 1;
-        display(quantity);
+        displayQuantity(quantity);
 
 
       //  displayPrice(quantity * 5);
@@ -74,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         //int quantity = 2;
         quantity = quantity -1;
-        display(quantity);
+        displayQuantity(quantity);
        // displayPrice(numberOfCoffee * 5);
     }
 

@@ -11,6 +11,7 @@ package com.example.shivamx.just_java;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import java.text.NumberFormat;
 
@@ -42,24 +43,33 @@ public class MainActivity extends AppCompatActivity {
         return quantity * 5;
     }
 
+    /**
+     *
+     * @param view
+     */
+
     public void submitOrder(View view) {
 
+        CheckBox whippedCreamCheckbox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
+        boolean haswWhippedCream = whippedCreamCheckbox.isChecked();
         int price = calculatePrice();
-        displayMessage(createOrderSummary(price));
+        displayMessage(createOrderSummary(price, haswWhippedCream));
 
     }
 
     /**
      *
      * @param price total price of order
+     *              @param addWhippedCream whether user want whipped cream or not
      * @return order summary
      */
 
-    private String createOrderSummary(int price){
+    private String createOrderSummary(int price, boolean addWhippedCream){
 
 
        String priceMessage = "Name : Shivam Pokhriyal \n ";
-        priceMessage = priceMessage + "Quantity : " + quantity ;
+        priceMessage = priceMessage + "Add Whipped Cream?" + addWhippedCream;
+        priceMessage = priceMessage + "\nQuantity : " + quantity ;
         priceMessage = priceMessage + " \n Total: $ " + price + " \n Thank You! "  ;
 
         return priceMessage;

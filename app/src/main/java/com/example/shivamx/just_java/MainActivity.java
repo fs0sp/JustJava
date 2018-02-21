@@ -52,23 +52,28 @@ public class MainActivity extends AppCompatActivity {
 
         CheckBox whippedCreamCheckbox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         boolean hasWhippedCream = whippedCreamCheckbox.isChecked();
+
+        CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
+        boolean hasChocolate = chocolateCheckBox.isChecked();
+
         int price = calculatePrice();
-        displayMessage(createOrderSummary(price, hasWhippedCream));
+        displayMessage(createOrderSummary(price, hasWhippedCream, hasChocolate));
 
     }
 
     /**
      *
      * @param price total price of order
-     *              @param addWhippedCream whether user want whipped cream or not
+     * @param addWhippedCream whether user want whipped cream or not
      * @return order summary
      */
 
-    private String createOrderSummary(int price, boolean addWhippedCream){
+    private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate){
 
 
        String priceMessage = "Name : Shivam Pokhriyal \n ";
-        priceMessage = priceMessage + "Add Whipped Cream?" + addWhippedCream;
+        priceMessage = priceMessage + "Add Whipped Cream? " + addWhippedCream;
+        priceMessage = priceMessage + "\nAdd Chocolate? " + addChocolate;
         priceMessage = priceMessage + "\nQuantity : " + quantity ;
         priceMessage = priceMessage + " \n Total: $ " + price + " \n Thank You! "  ;
 
